@@ -19,7 +19,7 @@ class FilterString extends Component {
         let { unfilteredArray } = this.state;
         newArray = unfilteredArray.filter((e, i, a) => !e.includes(userInput))
         console.log(newArray);
-        this.setState({ newArray: newArray })
+        this.setState({ filteredArray: newArray })
         return newArray
     }
     render() {

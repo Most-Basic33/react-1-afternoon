@@ -46,46 +46,23 @@ class FilterObjects extends Component {
         this.setState({ userInput: e.target.value })
     }
 
-
-
-        // for (let i = 0; i < dispensaries.length; i++) {
-        //     if (dispensaries[i].hasOwnProperty(prop)) {
-        //         filteredDispos.push(dispensaries[i]);
-        //     }
-
-        //console.log(filteredDispos, 'filteredDispo')
-                // filteredDispos = dispensaries.filter((e, i, a) => e == e.price > 4);
-    filteredDispo(prop) {
+    filteredDispo(userInput) {
         let dispensaries = this.state.dispensaries;
-        let filteredDispos = [];
-        filteredDispos = dispensaries.filter((e, i, a) => e.yearsOpen == prop)
-
-        // filteredDispos = dispensaries.filter((e, i, a) => e == e.price > 4);
-        console.log(filteredDispos);
-
-        this.setState({ filteredDispos: filteredDispos });
-        console.log(filteredDispos, 'after state is set')
-        return filteredDispos
+        let filteredDispo2 = [];
+        filteredDispo2 = dispensaries.filter((disp, i, e) => disp.location === userInput || disp.price === userInput || disp.name === userInput || disp.yearsOpen === userInput);
+        this.setState({ filteredDispo: filteredDispo2 })
     }
+    // let dispensaries = [...this.state.dispensaries];
+    // let filteredDispo2 = dispensaries.filter((e, i, a) => e.yearsOpen > +userInput)//+fast conversion from string to a number
+
+    // // filteredDispos = dispensaries.filter((e, i, a) => e == e.price > 4);
+    // console.log(filteredDispo2);
+
+    // this.setState({ filteredDispo: filteredDispo2 });
+    // //console.log(filteredDispo2, 'after state is set')
+    // //return filteredDispo2
 
 
-    // filteredDispo(userInput) {
-    //     console.log(userInput);
-    //     // let { filteredDispo } = this.state;
-    //     let newArray = [];
-    //     let { dispensaries } = this.state
-
-    //     for (let i = 0; i < dispensaries.length; i++) {
-    //         if (dispensaries[i].hasOwnProperty(userInput)) {
-    //             // filteredDispo.push(dispensaries[i])
-    //             newArray.push(dispensaries[i])
-    //         }
-    //         console.log(this.filteredDispo, "first one");
-    //         this.setState({ filteredDispo: newArray })
-    //         console.log(this.filteredDispo, "2nd one")
-    //         console.log(newArray, "new array")
-
-    //     }
 
     render() {
         // console.log(this.newArray, 'New Array')
@@ -95,7 +72,7 @@ class FilterObjects extends Component {
                 <span className='puzzleText'>Original:{JSON.stringify(this.state.dispensaries, null, 10)}</span>
                 <input className='inputText' onChange={(e) => this.handleChange(e)} />
                 <button className='confirmationButton' onClick={() => this.filteredDispo(this.state.userInput)} >Filter</button>
-                <span className='rusultsBox filterObjectRB'>Filtered: {JSON.stringify(this.state.filteredEmployees, null, 10)} </span>
+                <span className='rusultsBox filterObjectRB'>Filtered: {JSON.stringify(this.state.filteredDispo, null, 10)} </span>
                 <h4>Filter Objects</h4>
             </div>
         )
