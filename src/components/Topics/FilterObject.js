@@ -46,13 +46,7 @@ class FilterObjects extends Component {
         this.setState({ userInput: e.target.value })
     }
 
-    filteredDispo(prop) {
-        let dispensaries = this.state.dispensaries;
-        let filteredDispos = [];
-        filteredDispos = dispensaries.filter((e, i, a) => e.yearsOpen > prop)
 
-        // filteredDispos = dispensaries.filter((e, i, a) => e == e.price > 4);
-        console.log(filteredDispos);
 
         // for (let i = 0; i < dispensaries.length; i++) {
         //     if (dispensaries[i].hasOwnProperty(prop)) {
@@ -60,6 +54,15 @@ class FilterObjects extends Component {
         //     }
 
         //console.log(filteredDispos, 'filteredDispo')
+                // filteredDispos = dispensaries.filter((e, i, a) => e == e.price > 4);
+    filteredDispo(prop) {
+        let dispensaries = this.state.dispensaries;
+        let filteredDispos = [];
+        filteredDispos = dispensaries.filter((e, i, a) => e.yearsOpen == prop)
+
+        // filteredDispos = dispensaries.filter((e, i, a) => e == e.price > 4);
+        console.log(filteredDispos);
+
         this.setState({ filteredDispos: filteredDispos });
         console.log(filteredDispos, 'after state is set')
         return filteredDispos
@@ -83,17 +86,6 @@ class FilterObjects extends Component {
     //         console.log(newArray, "new array")
 
     //     }
-
-
-
-
-
-
-
-
-
-
-
 
     render() {
         // console.log(this.newArray, 'New Array')
